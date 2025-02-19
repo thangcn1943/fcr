@@ -2,3 +2,4 @@
 *.ods
 *.json
 /models/
+/faiss_db/

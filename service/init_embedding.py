@@ -55,3 +55,5 @@ async def store_embedding(pdf_path, chunk_size):
     print("Store embedding successfully!")
     torch.cuda.empty_cache()
 
+# def main():
+#     pdf_path = 
