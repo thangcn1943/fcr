@@ -1,0 +1,53 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "rag_aio",
+            "description": "Trả lời câu hỏi dựa trên dữ liệu từ tài liệu AIO PDF (ví dụ: AI Agent là gì)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "Câu hỏi của người dùng cần trả lời"
+                    }
+                },
+                "required": ["question"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "rag_billionares",
+            "description": "Trả lời câu hỏi dựa trên dữ liệu từ tài liệu Billionares PDF (ví dụ: Có bao nhiêu tỷ phú ở Mỹ)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "Câu hỏi của người dùng về tỷ phú"
+                    }
+                },
+                "required": ["question"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "rag_economic",
+            "description": "Trả lời câu hỏi dựa trên dữ liệu từ tài liệu Economic PDF (về kinh tế và tài chính)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "Câu hỏi của người dùng về kinh tế"
+                    }
+                },
+                "required": ["question"]
+            }
+        }
+    }
+]
