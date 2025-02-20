@@ -2,15 +2,18 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from dotenv import load_dotenv
 import os
-from langchain_text_splitters import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 import torch
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
+from service.init_model import embeddings
+
 
 load_dotenv()
-EMBED_MODEL = 'BAAI/bge-small-en-v1.5' # os.getenv("EMBED_MODEL")
-FAISS_ROOT = 'faiss_db' # os.getenv("FAISS_ROOT")
+EMBED_MODEL = os.getenv("EMBED_MODEL") # 'BAAI/bge-small-en-v1.5' 
+FAISS_ROOT = os.getenv("FAISS_ROOT") # 'faiss_db'
+
 os.makedirs(FAISS_ROOT, exist_ok=True)
 
 def download_pdf(id: str):
@@ -37,10 +40,6 @@ def pdf_to_text(pdf_path: str, chunk_size = 1000):
 
 async def store_embedding(pdf_path, chunk_size):
     texts = pdf_to_text(pdf_path, chunk_size)
-    embeddings = HuggingFaceEmbeddings(
-        model_name=EMBED_MODEL,
-        model_kwargs={'device': 'cpu'}
-    )
 
     index = faiss.IndexFlatL2(len(embeddings.embed_query('thang')))
     vector_store = FAISS(
