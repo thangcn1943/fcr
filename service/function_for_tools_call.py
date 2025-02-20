@@ -3,7 +3,7 @@ from groq import Groq
 import dotenv
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from search_doc import retrieve_and_re_rank_advanced
+from service.search_doc import retrieve_and_re_rank_advanced
 
 MODEL = os.getenv('MODEL')
 EMBED_MODEL = os.getenv("EMBED_MODEL") # 'BAAI/bge-small-en-v1.5'

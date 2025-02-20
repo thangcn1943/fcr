@@ -7,8 +7,8 @@ load_dotenv()
 RESCORE_MODEL = os.getenv('RESCORE_MODEL') # 'itdainb/PhoRanker'
 
 # rerank search results
-cross_encoder = CrossEncoder(RESCORE_MODEL)
-
+# cross_encoder = CrossEncoder(RESCORE_MODEL)
+cross_encoder = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 def retrieve_and_re_rank_advanced(vector_db, query, k=10):
     # Lấy kết quả từ Vector Database
     docs_with_scores = vector_db.similarity_search_with_score(query, k=k)

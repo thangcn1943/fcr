@@ -3,3 +3,4 @@
 *.json
 /models/
 /faiss_db/
+service/__pycache__/
