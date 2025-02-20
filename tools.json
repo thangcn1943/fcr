@@ -49,5 +49,22 @@
                 "required": ["question"]
             }
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "rag_medical",
+            "description": "Trả lời câu hỏi dựa trên dữ liệu từ tài liệu Bệnh Học PDF(e.g các bệnh)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "Câu hỏi của người dùng về các loại bệnh"
+                    }
+                },
+                "required": ["question"]
+            }
+        }
     }
 ]

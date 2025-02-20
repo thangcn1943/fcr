@@ -57,3 +57,17 @@ def rag_economic(question: str):
     )
     # print(chat_completion.choices[0].message.content)
     return chat_completion.choices[0].message.content
+
+def rag_medical(question: str):
+    vector_db = FAISS.load_local('/home/thangcn/Downloads/datn/faiss_db/pdf_medical', embeddings, allow_dangerous_deserialization=True)
+    retrieved_docs, scores = retrieve_and_re_rank_advanced(vector_db, question)
+        # Gửi yêu cầu đến mô hình Groq
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant that utilizes retrieved information."},
+            {"role": "user", "content": f"Context:\n{retrieved_docs[0]}\n\nQuestion: {question}"},
+        ],
+        model= MODEL,
+    )
+    # print(chat_completion.choices[0].message.content)
+    return chat_completion.choices[0].message.content

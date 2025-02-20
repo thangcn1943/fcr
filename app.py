@@ -5,7 +5,7 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 import json
-from service.function_for_tools_call import rag_aio, rag_billionares, rag_economic
+from service.function_for_tools_call import rag_aio, rag_billionares, rag_economic, rag_medical
 import streamlit as st
 import logging
 logging.disable(logging.WARNING)
@@ -46,7 +46,8 @@ def run_conversation(user_prompt):
         available_functions = {
             "rag_aio": rag_aio,
             "rag_billionares": rag_billionares,
-            "rag_economic": rag_economic
+            "rag_economic": rag_economic,
+            "rag_medical": rag_medical
         }
 
         messages.append(response_message)
@@ -72,7 +73,7 @@ def run_conversation(user_prompt):
 
 def main():
 
-    st.title("QA System")
+    st.title("THANGCN's AI Assistant")
 
     # Khởi tạo session state nếu chưa có
     if "messages" not in st.session_state:
