@@ -3,14 +3,14 @@ from groq import Groq
 import dotenv
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_core.documents import Document
-import faiss
-from langchain_community.docstore.in_memory import InMemoryDocstore
-import json
 from search_doc import retrieve_and_re_rank_advanced
-from service.init_model import MODEL
-from service.init_model import embeddings
 
+MODEL = os.getenv('MODEL')
+EMBED_MODEL = os.getenv("EMBED_MODEL") # 'BAAI/bge-small-en-v1.5'
+embeddings = HuggingFaceEmbeddings(
+    model_name=EMBED_MODEL,
+    model_kwargs={'device': 'cpu'}
+)
 dotenv.load_dotenv('.env') 
 groq_api_key = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=groq_api_key)

@@ -7,13 +7,16 @@ from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 import torch
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
-from service.init_model import embeddings
 
 
 load_dotenv()
 EMBED_MODEL = os.getenv("EMBED_MODEL") # 'BAAI/bge-small-en-v1.5' 
 FAISS_ROOT = os.getenv("FAISS_ROOT") # 'faiss_db'
 
+embeddings = HuggingFaceEmbeddings(
+    model_name=EMBED_MODEL,
+    model_kwargs={'device': 'cpu'}
+)
 os.makedirs(FAISS_ROOT, exist_ok=True)
 
 def download_pdf(id: str):
