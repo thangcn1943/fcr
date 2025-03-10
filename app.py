@@ -15,6 +15,7 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=groq_api_key)
 MODEL = os.getenv('MODEL')
 EMBED_MODEL = os.getenv("EMBED_MODEL")
+
 with open('tools.json', 'r') as f:
     tools = json.load(f)
 

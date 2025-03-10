@@ -4,3 +4,4 @@
 /models/
 /faiss_db/
 service/__pycache__/
+/pdf/
